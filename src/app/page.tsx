@@ -5,10 +5,13 @@ import Cards from "@/components/Cards";
 import axios, { AxiosResponse } from "axios";
 
 interface Blogs {
-  _id: string; // Make sure _id is typed as a string
+  _id: string;
   title: string;
   img: string;
   caption: string;
+  user: {
+    username: string;
+  };
 }
 
 export default function Home() {
@@ -49,6 +52,7 @@ export default function Home() {
             title={blog.title}
             image={blog.img}
             caption={blog.caption}
+            username={blog.user.username} // Pass the username to the Cards component
           />
         ))
       ) : (

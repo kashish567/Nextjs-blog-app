@@ -18,10 +18,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div>
-          <Header />
+        <div className="p-4 bg-gray-300">
+          <div>
+            <Header />
+          </div>
+          {children}
         </div>
-        {children}
       </body>
     </html>
   );

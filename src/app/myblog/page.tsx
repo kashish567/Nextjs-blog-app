@@ -8,6 +8,9 @@ interface Blogs {
   title: string;
   img: string;
   caption: string;
+  user: {
+    username: string;
+  };
 }
 
 const MyBlog = () => {
@@ -34,19 +37,20 @@ const MyBlog = () => {
   return (
     <div>
       {blogs.length > 0 ? (
-        <div className="mt-20">
+        <div className="mt-20 h-screen">
           {blogs.map((blog) => (
             <Cards
+              username={blog.user.username}
               key={blog._id}
               id={blog._id}
               title={blog.title}
               image={blog.img}
-              caption={blog.caption}
+              caption={blog.caption} 
             />
           ))}
         </div>
       ) : (
-        <div className="flex items-center justify-center mt-24 text-4xl text-black">
+        <div className="flex items-center justify-center h-screen mt-24 text-4xl text-black">
           No blogs available
         </div>
       )}
