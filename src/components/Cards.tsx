@@ -1,4 +1,7 @@
+import Link from "next/link";
 import React from "react";
+import { usePathname, useRouter } from "next/navigation";
+import axios from "axios";
 
 interface Cards {
   id: string;
@@ -8,6 +11,22 @@ interface Cards {
 }
 
 const Cards: React.FC<Cards> = ({ id, title, caption, image }) => {
+  const router = useRouter();
+  const pathName = usePathname();
+  console.log(pathName);
+
+  const handleDelete = () => {
+    axios
+      .delete(`/api/blogs/deleteblog/${id}`)
+      .then((res) => {
+        console.log(res.data.message);
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err.response.data.message);
+      });
+  };
+
   return (
     <div className="mt-20">
       <article className="flex bg-white transition hover:shadow-xl">
@@ -30,14 +49,22 @@ const Cards: React.FC<Cards> = ({ id, title, caption, image }) => {
             </p>
           </div>
 
-          <div className="sm:flex sm:items-end sm:justify-end">
-            <a
-              href="#"
-              className="block bg-yellow-300 px-5 py-3 text-center text-xs font-bold uppercase text-gray-900 transition hover:bg-yellow-400"
-            >
-              Read Blog
-            </a>
-          </div>
+          {pathName === "/myblog" && (
+            <div className="sm:flex sm:items-end sm:justify-end">
+              <button
+                onClick={handleDelete}
+                className="block bg-red-500 mx-4 px-5 py-3 text-center text-xs font-bold uppercase text-white transition hover:bg-yellow-400"
+              >
+                Delete Blog
+              </button>
+              <Link
+                href={`/updateblog/${id}`}
+                className="block bg-yellow-300 px-5 py-3 text-center text-xs font-bold uppercase text-gray-900 transition hover:bg-yellow-400"
+              >
+                Update Blog
+              </Link>
+            </div>
+          )}
         </div>
       </article>
     </div>

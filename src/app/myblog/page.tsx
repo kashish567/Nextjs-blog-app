@@ -10,7 +10,7 @@ interface Blogs {
   caption: string;
 }
 
-const page = () => {
+const MyBlog = () => {
   const [blogs, setBlogs] = useState<Blogs[]>([]);
 
   useEffect(() => {
@@ -30,6 +30,7 @@ const page = () => {
     };
     fetchBlogs();
   }, []);
+
   return (
     <div>
       {blogs.length > 0 ? (
@@ -45,10 +46,12 @@ const page = () => {
           ))}
         </div>
       ) : (
-        <>No blogs available</>
+        <div className="flex items-center justify-center mt-24 text-4xl text-black">
+          No blogs available
+        </div>
       )}
     </div>
   );
 };
 
-export default page;
+export default MyBlog;
