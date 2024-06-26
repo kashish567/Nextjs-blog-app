@@ -20,6 +20,7 @@ const LoginPage = () => {
       const res = await axios.post("/api/users/login", user); // Pass the user data
       localStorage.setItem("userId", res.data.id);
       router.push("/");
+      window.location.reload();
       toast.success(res.data.message);
     } catch (error: any) {
       toast.error(error.response?.data?.message || "An error occurred");

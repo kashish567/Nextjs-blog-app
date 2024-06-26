@@ -37,7 +37,7 @@ const MyBlog = () => {
   return (
     <div>
       {blogs.length > 0 ? (
-        <div className="mt-20 h-screen">
+        <div className="mt-20 h-auto">
           {blogs.map((blog) => (
             <Cards
               username={blog.user.username}
@@ -45,7 +45,7 @@ const MyBlog = () => {
               id={blog._id}
               title={blog.title}
               image={blog.img}
-              caption={blog.caption} 
+              caption={blog.caption}
             />
           ))}
         </div>

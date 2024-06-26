@@ -29,7 +29,7 @@ const Cards: React.FC<Cards> = ({ id, title, caption, image, username }) => {
   };
 
   return (
-    <div className="mt-20">
+    <div className="mt-20 mx-6 mb-4">
       <article className="flex bg-white transition hover:shadow-xl">
         <div className="hidden sm:block sm:basis-56">
           <img
@@ -59,13 +59,13 @@ const Cards: React.FC<Cards> = ({ id, title, caption, image, username }) => {
             <div className="sm:flex sm:items-end sm:justify-end">
               <button
                 onClick={handleDelete}
-                className="block bg-red-500 mx-4 px-5 py-3 text-center text-xs font-bold uppercase text-white transition hover:bg-yellow-400"
+                className="block bg-red-500 mx-4 mb-6 px-5  py-3 text-center text-xs font-bold uppercase text-white transition hover:bg-yellow-400"
               >
                 Delete Blog
               </button>
               <Link
                 href={`/updateblog/${id}`}
-                className="block bg-yellow-300 px-5 py-3 text-center text-xs font-bold uppercase text-gray-900 transition hover:bg-yellow-400"
+                className="block bg-yellow-300 px-5 py-3 mr-6 mb-6 text-center text-xs font-bold uppercase text-gray-900 transition hover:bg-yellow-400"
               >
                 Update Blog
               </Link>
@@ -78,3 +78,4 @@ const Cards: React.FC<Cards> = ({ id, title, caption, image, username }) => {
 };
 
 export default Cards;
+

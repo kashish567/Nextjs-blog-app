@@ -54,8 +54,8 @@ const UpdateBlog: React.FC<UpdateBlogProps> = ({ params }) => {
     <>
       {blogData && (
         <div className="flex items-center justify-center">
-          <div className="px-4 py-24 sm:px-6 lg:px-8 h-[580px] w-[600px]">
-            <div className="mx-auto max-w-lg">
+          <div className="px-4 py-24 sm:px-6 lg:px-8 h-[567px] w-[600px]">
+            <div className="mx-auto pt-4 bg-white rounded-xl max-w-lg">
               <h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
                 Update your Blog
               </h1>
