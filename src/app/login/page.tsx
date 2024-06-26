@@ -67,7 +67,7 @@ const LoginPage = () => {
           Login
         </button>
         <p className="mt-4">
-          Don't have an account?
+          Dont have an account? &apos;
           <Link href="/signup" className="font-bold">
             SIGNUP
           </Link>

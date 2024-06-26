@@ -28,7 +28,7 @@ const Header = () => {
     } else {
       setUserId(storedUserId); // Set userId if present
     }
-  }, []);
+  },[]);
 
   console.log(userId);
 
