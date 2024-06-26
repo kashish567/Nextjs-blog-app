@@ -34,7 +34,7 @@ export const POST = async (req: NextRequest) => {
     });
 
     const res = NextResponse.json(
-      { message: `Welcome back ${user.username}`, success: true },
+      { message: `Welcome back ${user.username}`, id: user._id, success: true },
       { status: 200 }
     );
 

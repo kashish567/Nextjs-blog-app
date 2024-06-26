@@ -18,6 +18,7 @@ const LoginPage = () => {
   const submitHandler = async () => {
     try {
       const res = await axios.post("/api/users/login", user); // Pass the user data
+      localStorage.setItem("userId", res.data.id);
       router.push("/");
       toast.success(res.data.message);
     } catch (error: any) {

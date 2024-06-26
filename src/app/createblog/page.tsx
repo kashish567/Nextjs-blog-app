@@ -2,9 +2,10 @@
 
 import React, { useState } from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 const CreateBlog = () => {
+  const router = useRouter();
   const [blogData, setBlogData] = useState({ title: "", caption: "", img: "" });
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -13,7 +14,7 @@ const CreateBlog = () => {
     e.preventDefault();
 
     // Fetch user ID from cookies
-    const userId = Cookies.get("id");
+    const userId = localStorage.getItem("userId");
     if (!userId) {
       setError("User not authenticated.");
       return;
@@ -26,7 +27,9 @@ const CreateBlog = () => {
       );
       if (response.status === 201) {
         setSuccess("Blog created successfully!");
+
         setBlogData({ title: "", caption: "", img: "" });
+        router.push("/");
       } else {
         setError(response.data.message || "Something went wrong.");
       }
