@@ -21,7 +21,6 @@ export const POST = async (req: NextRequest) => {
         { message: "User does not exist" },
         { status: 400 }
       );
-
     const isMatch = await bcryptjs.compare(password, user.password);
     if (!isMatch)
       return NextResponse.json(

@@ -2,10 +2,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
-import router from "next/router";
+import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
+import { useEffect, useState } from "react"; // Import useEffect and useState hooks
 
 const Header = () => {
+  const [userId, setUserId] = useState("");
+
+  const router = useRouter();
   const logoutHandler = async () => {
     try {
       localStorage.removeItem("userId");
@@ -17,8 +21,17 @@ const Header = () => {
     }
   };
 
-  const userId = localStorage.getItem("userId");
+  useEffect(() => {
+    const storedUserId = localStorage.getItem("userId");
+    if (!storedUserId) {
+      router.push("/login"); // Redirect to login page if user is not authenticated
+    } else {
+      setUserId(storedUserId); // Set userId if present
+    }
+  }, []);
+
   console.log(userId);
+
   return (
     <div>
       <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
