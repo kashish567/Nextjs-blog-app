@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { usePathname, useRouter } from "next/navigation";
 import axios from "axios";
+import Image from "next/image";
 
 interface Cards {
   id: string;
@@ -32,7 +33,9 @@ const Cards: React.FC<Cards> = ({ id, title, caption, image, username }) => {
     <div className="mt-20 mx-6 mb-4">
       <article className="flex bg-white transition hover:shadow-xl">
         <div className="hidden sm:block sm:basis-56">
-          <img
+          <Image
+          height={100}
+          width={100}
             alt=""
             src={image}
             className="aspect-square h-full w-full object-cover"
