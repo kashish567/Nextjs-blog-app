@@ -38,9 +38,9 @@ const SignupPage = () => {
     }
   }, [user]);
   return (
-    <div className="flex justify-center items-center bg-blue-200 min-h-screen">
+    <div className="flex justify-center items-center bg-[#FDC5F5] min-h-screen">
       <div className="bg-white p-10 shadow-lg rounded-lg">
-        <h1 className="font-bold text-blue-700">SIGNUP</h1>
+        <h1 className="font-bold text-[#813476]">SIGNUP</h1>
         <div className="flex flex-col my-4"></div>
         <div className="flex flex-col my-4">
           <label>Username</label>
@@ -72,7 +72,7 @@ const SignupPage = () => {
         <button
           onClick={submitHandler}
           className={`${
-            disable ? "bg-[#e3e3e3] cursor-not-allowed" : "bg-[#4974b4]"
+            disable ? "bg-[#e3e3e3] cursor-not-allowed" : "bg-[#813476]"
           }  w-full py-1 my-2 rounded-md text-white`}
         >
           Signup

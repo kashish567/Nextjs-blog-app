@@ -5,9 +5,10 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { useEffect, useState } from "react"; // Import useEffect and useState hooks
+import { FaBloggerB } from "react-icons/fa";
 
 const Header = () => {
-  const [userId, setUserId] = useState("");
+  const [userId, setUserId] = useState(true);
 
   const router = useRouter();
   const logoutHandler = async () => {
@@ -15,49 +16,39 @@ const Header = () => {
       localStorage.removeItem("userId");
       const response = await axios.get("/api/users/logout");
       router.push("/login");
+      setUserId(false);
       toast.success(response.data.message);
     } catch (error: any) {
       toast.error(error.message);
     }
   };
 
-  useEffect(() => {
-    const storedUserId = localStorage.getItem("userId");
-    if (!storedUserId) {
-      router.push("/login"); // Redirect to login page if user is not authenticated
-    } else {
-      setUserId(storedUserId); // Set userId if present
-    }
-  },[]);
+  // useEffect(() => {
+  //   const storedUserId = localStorage.getItem("userId");
+  //   if (!storedUserId) {
+  //     router.push("/login"); // Redirect to login page if user is not authenticated
+  //   } else {
+  //     // setUserId(storedUserId); // Set userId if present
+  //   }
+  // }, []);
 
   console.log(userId);
 
   return (
     <div>
       <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a
-            href="https://flowbite.com/"
-            className="flex items-center space-x-3 rtl:space-x-reverse"
-          >
-            <Image
-              width={100}
-              height={100}
-              src="https://flowbite.com/docs/images/logo.svg"
-              className="h-8"
-              alt="Flowbite Logo"
-            />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap text-blue-700">
-              BLOGZEE
-            </span>
-          </a>
+        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-6 p-3">
+          <span className="self-center text-2xl font-semibold whitespace-nowrap text-[#52307e] inline-flex items-center">
+            <FaBloggerB className="mr-2 text-[#52307e] " size={30} /> BLOGZEE
+          </span>
+
           {userId ? (
             <>
               <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                 <button
                   type="button"
                   onClick={logoutHandler}
-                  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="text-black bg-gray-200 border border-black md:hover:bg-[#B388EB] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   Logout
                 </button>
@@ -94,7 +85,7 @@ const Header = () => {
                   <li>
                     <Link
                       href="/"
-                      className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                      className="block py-2 px-3 text-black text-lg font-bold bg-black rounded md:bg-transparent  md:hover:text-[#52307e] md:text-black md:p-0 md:dark:text-black"
                       aria-current="page"
                     >
                       Home
@@ -104,7 +95,7 @@ const Header = () => {
                   <li>
                     <Link
                       href="/myblog"
-                      className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                      className="block py-2 px-3 text-lg font-bold text-black rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#52307e] md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                     >
                       My Blogs
                     </Link>
@@ -112,7 +103,7 @@ const Header = () => {
                   <li>
                     <Link
                       href="/createblog"
-                      className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                      className="block py-2 px-3 text-gray-900 text-lg font-bold rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#52307e] md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                     >
                       Create Blog
                     </Link>

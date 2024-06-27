@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Cards from "@/components/Cards";
 import axios, { AxiosResponse } from "axios";
+import { ToastContainer } from "react-toastify";
 
 interface Blogs {
   _id: string;
@@ -44,6 +45,7 @@ export default function Home() {
 
   return (
     <>
+      <ToastContainer position="bottom-right" theme="dark" />
       {blogs.length > 0 ? (
         blogs.map((blog) => (
           <Cards

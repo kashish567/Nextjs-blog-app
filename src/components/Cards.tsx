@@ -30,21 +30,21 @@ const Cards: React.FC<Cards> = ({ id, title, caption, image, username }) => {
   };
 
   return (
-    <div className="mt-20 mx-6 mb-4">
-      <article className="flex bg-white transition hover:shadow-xl">
+    <div className="mt-20 mx-6  mb-4">
+      <article className="flex transition-tranform transform hover:scale-95 bg-white rounded-md transition hover:shadow-xl">
         <div className="hidden sm:block sm:basis-56">
           <Image
-          height={100}
-          width={100}
+            height={100}
+            width={100}
             alt=""
             src={image}
-            className="aspect-square h-full w-full object-cover"
+            className="aspect-square h-full border border-gray-600 rounded-md w-full object-cover"
           />
         </div>
-        <div className="flex flex-1 flex-col justify-between">
-          <div className="border-s border-gray-900/10 p-4 sm:border-l-transparent sm:p-6">
+        <div className="flex flex-1 border border-gray-600 flex-col justify-between">
+          <div className="border-s border-gray-900/10  p-4 sm:border-l-transparent sm:p-6">
             <a href="#">
-              <h1 className="font-bold text-2xl uppercase text-black">
+              <h1 className="font-bold font-serif text-2xl uppercase text-black">
                 {username}
               </h1>
               <hr className=" border border-slate-600 " />
@@ -81,4 +81,3 @@ const Cards: React.FC<Cards> = ({ id, title, caption, image, username }) => {
 };
 
 export default Cards;
-
