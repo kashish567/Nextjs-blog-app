@@ -4,7 +4,7 @@ import Link from "next/link";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation"; // Change this import
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -19,9 +19,9 @@ const LoginPage = () => {
     try {
       const res = await axios.post("/api/users/login", user); // Pass the user data
       localStorage.setItem("userId", res.data.id);
+      toast.success(res.data.message);
       router.push("/");
       window.location.reload();
-      toast.success(res.data.message);
     } catch (error: any) {
       toast.error(error.response?.data?.message || "An error occurred");
     }
@@ -37,6 +37,7 @@ const LoginPage = () => {
 
   return (
     <div className="flex justify-center items-center bg-[#FDC5F5] min-h-screen">
+      <Toaster />
       <div className="bg-white p-10 shadow-lg rounded-lg">
         <h1 className="font-bold text-[#813476]">LOGIN</h1>
         <div className="flex flex-col my-4">
@@ -66,6 +67,7 @@ const LoginPage = () => {
         >
           Login
         </button>
+
         <p className="mt-4">
           Dont have an account? &apos;
           <Link href="/signup" className="font-bold text-[#813476]">

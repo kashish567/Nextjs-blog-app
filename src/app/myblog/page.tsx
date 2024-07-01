@@ -20,7 +20,7 @@ const MyBlog = () => {
     const fetchBlogs = async () => {
       const userId = localStorage.getItem("userId");
       try {
-        const res = await axios.get(`/api/blogs/getblog/${userId}`);
+        const res = await axios.get(`/api/blogs/getuserblog/${userId}`);
         if (res.status === 200) {
           setBlogs(res.data.data);
           console.log(res.data.data);

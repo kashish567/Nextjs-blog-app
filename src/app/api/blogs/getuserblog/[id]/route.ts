@@ -13,7 +13,7 @@ export const GET = async (req: NextRequest, context: { params: Params }) => {
   try {
     const id = new mongoose.Types.ObjectId(context.params.id);
     console.log(context.params.id);
-    const blogs = await Blog.findById(id).populate("user");
+    const blogs = await Blog.find({ user: id }).populate("user");
     console.log(blogs);
     return NextResponse.json({ data: blogs }, { status: 200 });
   } catch (error: any) {
